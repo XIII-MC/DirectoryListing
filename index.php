@@ -65,23 +65,24 @@ foreach ($filtered_directory as $item) {
 
     <title>GTeam's Cloud</title>
 
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="style.css">
 
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
 </head>
-<body class="dark-mode">
+<body class="light-mode">
 
     <div class="container">
 
         <div class="header">
 
             <h1>GTeam's Cloud</h1>
-            <button id="theme-toggle">Toggle Light Mode</button>
 
         </div>
 
-        <label for="search"></label><input type="text" id="search" placeholder="Search...">
-
-        <table id="directoryTable">
+        <table id="directoryTable" class="display">
 
             <thead>
 
@@ -141,18 +142,13 @@ foreach ($filtered_directory as $item) {
 
     <script>
 
-        document.getElementById('search').addEventListener('input', function() {
+        $(document).ready(function() {
 
-            const filter = this.value.toLowerCase();
-
-            document.querySelectorAll('#directoryTable tbody tr').forEach(row => {
-
-                const text = row.cells[1].textContent.toLowerCase();
-                row.style.display = text.indexOf(filter) > -1 ? '' : 'none';
-
-            });
+            $('#directoryTable').DataTable();
 
         });
+
+        /*
 
         document.getElementById('theme-toggle').addEventListener('click', function() {
 
@@ -161,6 +157,8 @@ foreach ($filtered_directory as $item) {
             this.textContent = document.body.classList.contains('dark-mode') ? 'Toggle Light Mode' : 'Toggle Dark Mode';
 
         });
+
+         */
 
     </script>
 
